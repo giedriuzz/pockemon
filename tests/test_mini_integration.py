@@ -2,6 +2,8 @@ import unittest
 from unittest import mock
 from main import get_all_stats_name
 
+# https://pokeapi.co/api/v2/stat
+# https://pokeapi.co/api/v2/pokemon
 
 def mocked_requests_get(*args, **kwargs):
     class MockResponse:
@@ -28,7 +30,13 @@ def mocked_requests_get(*args, **kwargs):
             },
             200,
         )
-
+    elif args[0] == "https://pokeapi.co/api/pokemon/2:
+        return MockResponse(
+            "name": "overgrow",
+            
+            
+            
+        )
 
 class TestIntegration(unittest.TestCase):
     @mock.patch("requests.get", side_effect=mocked_requests_get)
